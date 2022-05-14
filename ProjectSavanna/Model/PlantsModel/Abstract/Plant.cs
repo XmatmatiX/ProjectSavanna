@@ -23,22 +23,29 @@ namespace ProjectSavanna.Model.PlantsModel.Abstract
             staticID++;
         }
 
-        public void NewTurn()
+        public int NewTurn()
         {
             if (ActualPlantTime > 0)
             {
                 ActualPlantTime--;
+                return 0;
             }
             else
             {
-                PlantNew();
                 ActualPlantTime = PlantTime;
+                return PlantRange;
             }
         }
 
-        public void PlantNew()
+        public int[] GetPosition()
         {
+            int[] position = { PositionX, PositionY };
+            return position;
+        }
 
+        public int GetHP()
+        {
+            return HPRestore;
         }
     }
 }
