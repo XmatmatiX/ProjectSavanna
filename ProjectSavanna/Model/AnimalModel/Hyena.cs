@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace ProjectSavanna.Model
 {
-    public class Crocodile : Carnivorous
+    public class Hyena : Carnivorous
     {
-        public int IsVisible { get; set; }
-        public Crocodile() : base()
+        public Hyena() : base()
         {
             Sight = 4;
             HP = 50;
-            WalkOnWater = true;
-            AtackCarnivorous = true;
+            //WalkOnWater = true;
+
 
         }
     }

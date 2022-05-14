@@ -14,8 +14,6 @@ namespace ProjectSavanna.Model
             Sight = 4;
             HP = 50;
 
-            Atack = 10;
-
         }
     }
 }

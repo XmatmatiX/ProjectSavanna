@@ -1,49 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ProjectSavanna.Model.PlantsModel.Abstract.Herb">
-    <Position X="2.75" Y="4.25" Width="1.5" />
+    <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Abstract\Herb.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Abstract.Plant">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAgEAAgAAgAAAAAAAAAAABAAAAAAAgQAAAAAA=</HashCode>
+      <HashCode>CAAAAAAAgEAAgAAgAAAAAAAAAQABAAAAAAAgQAAAAAQ=</HashCode>
       <FileName>Model\PlantsModel\Abstract\Plant.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Aloe">
-    <Position X="1.5" Y="6.25" Width="1.5" />
+    <Position X="1.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Aloe.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Grass">
-    <Position X="4" Y="6.25" Width="1.5" />
+    <Position X="3.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Grass.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Abstract.Tree">
-    <Position X="7.75" Y="4.25" Width="1.5" />
+    <Position X="7" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Abstract\Tree.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Baobab">
-    <Position X="9" Y="6.25" Width="1.5" />
+    <Position X="8.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Baobab.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectSavanna.Model.PlantsModel.Acacia">
-    <Position X="6.5" Y="6.25" Width="1.5" />
+    <Position X="6" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PlantsModel\Acacia.cs</FileName>

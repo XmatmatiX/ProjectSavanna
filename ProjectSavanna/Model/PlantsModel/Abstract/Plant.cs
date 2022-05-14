@@ -22,5 +22,23 @@ namespace ProjectSavanna.Model.PlantsModel.Abstract
             ID = staticID;
             staticID++;
         }
+
+        public void NewTurn()
+        {
+            if (ActualPlantTime > 0)
+            {
+                ActualPlantTime--;
+            }
+            else
+            {
+                PlantNew();
+                ActualPlantTime = PlantTime;
+            }
+        }
+
+        public void PlantNew()
+        {
+
+        }
     }
 }

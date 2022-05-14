@@ -13,5 +13,7 @@ namespace ProjectSavanna.Model
             Sight = 3;
             HP = 25;
         }
+
+
     }
 }

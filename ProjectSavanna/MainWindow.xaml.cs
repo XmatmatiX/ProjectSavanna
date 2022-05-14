@@ -25,11 +25,6 @@ namespace ProjectSavanna
         {
             InitializeComponent();
 
-            Lion lion = new Lion();
-            Antelope antelope = new Antelope();
-
-
-            Console.WriteLine();
 
         }
     }
