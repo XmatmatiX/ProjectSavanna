@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProjectSavanna.Model.Carnivorous">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAIAAAAAAAAAAAACIAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Abstract\Carnivorous.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Animal">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAgAAAgAAgAAAAAAAAQAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Model\AnimalModel\Abstract\Animal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Herbivores">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAQBCAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Abstract\Herbivores.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Giraffe">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Giraffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Zebra">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Zebra.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Antelope">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Antelope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Cheetah">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Cheetah.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Crocodile">
+    <Position X="10" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Crocodile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectSavanna.Model.Lion">
+    <Position X="12.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalModel\Lion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

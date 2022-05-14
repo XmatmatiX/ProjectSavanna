@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectSavanna.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace ProjectSavanna
         public MainWindow()
         {
             InitializeComponent();
+
+            Lion lion = new Lion();
+            Antelope antelope = new Antelope();
+
+
+            Console.WriteLine();
+
         }
     }
 }
