@@ -21,6 +21,14 @@ namespace ProjectSavanna.Model.PlantsModel.Abstract
         {
             ID = staticID;
             staticID++;
+            SetPosition();
+        }
+
+        public void SetPosition()
+        {
+            Random random = new Random();
+            PositionX = random.Next(0, 50);
+            PositionY = random.Next(0, 50);
         }
 
         public int NewTurn()

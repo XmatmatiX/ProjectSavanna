@@ -11,6 +11,7 @@ namespace ProjectSavanna.Model
 
         public Cheetah() : base()
         {
+            Name = "Cheetah";
             Sight = 4;
             HP = 75;
         }

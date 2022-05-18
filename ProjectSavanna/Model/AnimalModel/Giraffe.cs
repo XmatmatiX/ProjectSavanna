@@ -10,6 +10,7 @@ namespace ProjectSavanna.Model
     {
         public Giraffe() : base()
         {
+            Name = "Giraffe";
             Sight = 5;
             HP = 50;
 

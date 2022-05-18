@@ -8,8 +8,6 @@ namespace ProjectSavanna.Model
 {
     public abstract class Herbivores : Animal
     {
-        public bool EatTrees { get; set; }
-        public bool EatHerbs { get; set; }
 
         public Herbivores() : base()
         {

@@ -10,6 +10,7 @@ namespace ProjectSavanna.Model
     {
         public Antelope() : base()
         {
+            Name = "Antelope";
             Sight = 3;
             HP = 25;
         }

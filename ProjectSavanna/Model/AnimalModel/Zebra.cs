@@ -10,6 +10,7 @@ namespace ProjectSavanna.Model
     {
         public Zebra() : base()
         {
+            Name = "Lion";
             Sight = 4;
             HP = 30;
         }

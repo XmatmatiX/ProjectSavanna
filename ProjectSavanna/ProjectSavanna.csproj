@@ -7,7 +7,57 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\Acacia.png" />
+    <None Remove="Image\Aloe.png" />
+    <None Remove="Image\Antelope.jpg" />
+    <None Remove="Image\Baobab.png" />
+    <None Remove="Image\Cheetah.jpg" />
+    <None Remove="Image\EmptyFile.png" />
+    <None Remove="Image\Giraffe.jpg" />
+    <None Remove="Image\Grass.png" />
+    <None Remove="Image\Hyena.jpg" />
+    <None Remove="Image\Lion.jpg" />
+    <None Remove="Image\Zebra.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\Acacia.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Aloe.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Antelope.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Baobab.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Cheetah.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\EmptyFile.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Giraffe.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Grass.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Hyena.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Lion.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\Zebra.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

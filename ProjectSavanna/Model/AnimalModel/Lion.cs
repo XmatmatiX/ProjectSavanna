@@ -11,6 +11,7 @@ namespace ProjectSavanna.Model
 
         public Lion() : base()
         {
+            Name = "Lion";
             Sight = 4;
             HP = 50;
 

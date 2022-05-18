@@ -10,12 +10,14 @@ namespace ProjectSavanna.Model
     {
         private static int staticID { get; set; }
         public int ID { get; set; }
+        public string Name { get; set; }
         public int HP { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public int Sight { get; set; }
-        //public bool WalkOnWater { get; set; }
         public bool IsHerbivores { get; set; }
+        public bool EatTrees { get; set; }
+        public bool EatHerbs { get; set; }
         public bool IsHuntTime { get; set; }
         public int HuntID { get; set; }
         public int HuntPositionX { get; set; }
@@ -23,9 +25,15 @@ namespace ProjectSavanna.Model
 
         public Animal()
         {
-            Random random = new Random();
             ID = staticID;
             staticID++;
+            SetPosition();
+            EatHerbs = false;
+            EatTrees = false;
+        }
+        public void SetPosition()
+        {
+            Random random = new Random();
             PositionX = random.Next(0, 50);
             PositionY = random.Next(0, 50);
         }

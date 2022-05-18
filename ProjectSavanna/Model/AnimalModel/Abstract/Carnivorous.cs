@@ -13,6 +13,7 @@ namespace ProjectSavanna.Model
         public Carnivorous() : base()
         {
             IsHerbivores = false;
+
             Stamina = 8;
         }
 

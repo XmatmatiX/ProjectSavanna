@@ -9,13 +9,55 @@
         Title="MainWindow" Height="700" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="InfoGrid" Grid.Column="1">
-            <Grid.Background>
-                <SolidColorBrush Color="Aqua"/>
-            </Grid.Background>
+
+        <Grid x:Name="BoardGrid" Grid.Column="0">
         </Grid>
+
+        <Grid Background="AntiqueWhite" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Antelope" Margin="20" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+            <TextBox x:Name="AntelopeTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="0" Grid.Column="1"/>
+            <TextBlock Text="Cheetah" Margin="20" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="CheetahTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Text="Giraffe" Margin="20" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="GiraffeTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="2" Grid.Column="1"/>
+            <TextBlock Text="Hyena" Margin="20" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+            <TextBox x:Name="HyenaTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="3" Grid.Column="1"/>
+            <TextBlock Text="Lion" Margin="20" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+            <TextBox x:Name="LionTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="4" Grid.Column="1"/>
+            <TextBlock Text="Zebra" Margin="20" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
+            <TextBox x:Name="ZebraTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="5" Grid.Column="1"/>
+            <TextBlock Text="Acacia" Margin="20" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"/>
+            <TextBox x:Name="AcaciaTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="6" Grid.Column="1"/>
+            <TextBlock Text="Baobab" Margin="20" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0"/>
+            <TextBox x:Name="BaobabTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="7" Grid.Column="1"/>
+            <TextBlock Text="Grass" Margin="20" VerticalAlignment="Center" Grid.Row="8" Grid.Column="0"/>
+            <TextBox x:Name="GrassTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="8" Grid.Column="1"/>
+            <TextBlock Text="Aloe" Margin="20" VerticalAlignment="Center" Grid.Row="9" Grid.Column="0"/>
+            <TextBox x:Name="AloeTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="9" Grid.Column="1"/>
+
+            <Button x:Name="StartBtn" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Grid.ColumnSpan="2" Click="StartBtn_Click"/>
+            <Button x:Name="EndBtn" Content="End symulation" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Grid.ColumnSpan="2" Click="EndBtn_Click" />
+        </Grid>
+        
     </Grid>
 </Window>

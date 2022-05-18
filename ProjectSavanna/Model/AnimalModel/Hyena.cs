@@ -10,9 +10,10 @@ namespace ProjectSavanna.Model
     {
         public Hyena() : base()
         {
+            Name = "Hyena";
             Sight = 4;
             HP = 50;
-            //WalkOnWater = true;
+
 
 
         }

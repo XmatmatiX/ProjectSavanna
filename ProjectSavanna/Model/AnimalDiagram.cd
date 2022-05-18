@@ -10,7 +10,7 @@
   <Class Name="ProjectSavanna.Model.Animal">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAACAAAkICAgQAgCAAAAAAAQAAABAAAAAEAAAABQAA=</HashCode>
+      <HashCode>AQAACAAAkKCAgQAgCAAAAAAAQAAABAAAAAEAAAABQAA=</HashCode>
       <FileName>Model\AnimalModel\Abstract\Animal.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -56,7 +56,7 @@
       <FileName>Model\AnimalModel\Lion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ProjectSavanna.Model.Hyena" Collapsed="true">
+  <Class Name="ProjectSavanna.Model.Hyena">
     <Position X="11.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
