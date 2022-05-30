@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ProjectSavanna.Model
 {
     public abstract class Animal
     {
         public string Name { get; set; }
+        protected ImageSource ModelImage { get; set; }
         protected int HP { get; set; }
         protected int PositionX { get; set; }
         protected int PositionY { get; set; }
@@ -39,9 +41,9 @@ namespace ProjectSavanna.Model
         {
             bool isMoved = false;
             Random random = new Random();
-            int move = random.Next(1, 9);
             while (!isMoved)
             {
+                int move = random.Next(1, 9);
                 switch (move)
                 {
                     case 1:
@@ -117,22 +119,15 @@ namespace ProjectSavanna.Model
         }
         public void IsHunted()
         {
-            if (PositionX == HuntPositionX && PositionY == HuntPositionY)
+            if (IsHerbivores)
             {
-                if (IsHerbivores)
-                {
-                    HP = 0;
-                }
-                else
-                {
-                    HP += 75;
-                }
-                IsHuntTime = false;
+                HP = 0;
             }
             else
             {
-                IsHuntTime = true;
+                HP += 75;
             }
+            IsHuntTime = false;
         }
         public bool IsAlive()
         {
@@ -150,6 +145,10 @@ namespace ProjectSavanna.Model
         {
             PositionX = posX;
             PositionY = posY;
+        }
+        public ImageSource GetImageSource()
+        {
+            return ModelImage;
         }
 
     }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ProjectSavanna.Model.PlantsModel.Abstract
 {
     public abstract class Plant
     {
         public string Name { get; set; }
+        protected ImageSource ModelImage { get; set; }
         public int HPRestore { get; set; }
         public int PositionX { get; set; }
         public int PositionY { get; set; }
@@ -74,6 +76,11 @@ namespace ProjectSavanna.Model.PlantsModel.Abstract
         public int GetHP()
         {
             return HPRestore;
+        }
+
+        public ImageSource GetImageSource()
+        {
+            return ModelImage;
         }
     }
 }

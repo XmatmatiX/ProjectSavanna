@@ -323,27 +323,113 @@ namespace ProjectSavanna
 
         private void MoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            ImageSource ModelImage;
             List<Animal> DeadAnimals = new List<Animal>();
             List<Plant> NewPlants = new List<Plant>();
+            foreach (var plant in PlantList)
+            {
+                position = plant.GetPosition();
+                int sight = plant.NewTurn();
+
+                if (sight != 0)
+                {
+                    Plant newPlant;
+                    if (plant.Name == "Acacia")
+                    {
+                        newPlant = new Acacia();
+                        newPlant.SetPosition(position, sight);
+                    }
+                    else if (plant.Name == "Aloe")
+                    {
+                        newPlant = new Aloe();
+                        newPlant.SetPosition(position, sight);
+                    }
+                    else if (plant.Name == "Baobab")
+                    {
+                        newPlant = new Baobab();
+                        newPlant.SetPosition(position, sight);
+                    }
+                    else
+                    {
+                        newPlant = new Grass();
+                        newPlant.SetPosition(position, sight);
+                    }
+                    position = newPlant.GetPosition();
+                    if (PlantPositions[position[0], position[1]] == 0)
+                    {
+                        NewPlants.Add(newPlant);
+                        if (plant.Name == "Acacia")
+                        {
+                            PlantPositions[position[0], position[1]] = 2;
+                            AcaciaTB.Text = (int.Parse(AcaciaTB.Text) + 1).ToString();
+                        }
+                        else if (plant.Name == "Baobab")
+                        {
+                            PlantPositions[position[0], position[1]] = 2;
+                            BaobabTB.Text = (int.Parse(BaobabTB.Text) + 1).ToString();
+                        }
+                        else if (plant.Name == "Grass")
+                        {
+                            PlantPositions[position[0], position[1]] = 1;
+                            GrassTB.Text = (int.Parse(GrassTB.Text) + 1).ToString();
+                        }
+                        else
+                        {
+                            PlantPositions[position[0], position[1]] = 1;
+                            AloeTB.Text = (int.Parse(AloeTB.Text) + 1).ToString();
+                        }
+                    }
+                }
+                if (AnimalPositions[position[0], position[1]] == 0)
+                {
+                    BoardImages[position[0], position[1]].Source = plant.GetImageSource();
+                }
+            }
+            foreach (var plant in NewPlants)
+            {
+                PlantList.Add(plant);
+            }
             foreach (var animal in AnimalList)
             {
-                if (animal.IsHuntTime)
-                {
-                    animal.IsHunted();
-                }
+                position = animal.GetPosition();
                 if (animal.IsAlive())
                 {
-                    position = animal.GetPosition();
+                    if (animal.IsHuntTime)
+                    {
+                        if (animal.IsHerbivores)
+                        {
+                            if (AnimalPositions[position[0], position[1]] == 2)
+                            {
+                                animal.IsHunted();
+                            }
+                        }
+                        else
+                        {
+                            int[] newHuntPosition = UpdateHuntPosition(position);
+                            if (newHuntPosition.Length == 2)
+                            {
+                                animal.StartHunt(newHuntPosition[0], newHuntPosition[1]);
+                            }
+                        }
+                    }
                     AnimalPositions[position[0], position[1]] = 0;
-                    ModelImage = BoardImages[position[0], position[1]].Source;
                     BoardImages[position[0], position[1]].Source = new BitmapImage(new Uri(@"pack://application:,,,/Image/EmptyFile.png"));
+
+                    if (!animal.IsHuntTime)
+                    {
+                        int[] huntPosition = CheckHuntTime(position, animal.Sight, animal.IsHerbivores);
+                        if (huntPosition[0] != position[0] || huntPosition[1] != position[1])
+                        {
+                            animal.StartHunt(huntPosition[0], huntPosition[1]);
+                        }
+                    }
+
                     if (animal.IsHuntTime)
                     {
                         int[] lastPosition;
                         if (animal.IsHerbivores)
                         {
                             lastPosition = animal.GetPosition();
+
                             animal.Move();
                             position = animal.GetPosition();
                             if (AnimalPositions[position[0], position[1]] != 0)
@@ -352,9 +438,48 @@ namespace ProjectSavanna
                                 position[0] = lastPosition[0];
                                 position[1] = lastPosition[1];
                             }
+                            if (animal.EatHerbs)
+                            {
+                                if (PlantPositions[position[0], position[1]] == 1)
+                                {
+                                    Plant plant = PlantList.Where(p => p.PositionX == position[0] && p.PositionY == position[1]).FirstOrDefault();
+                                    animal.Eat(plant.HPRestore);
+                                    PlantPositions[position[0], position[1]] = 0;
+                                    PlantList.Remove(plant);
+                                    if (plant.Name == "Aloe")
+                                    {
+                                        AloeTB.Text = (int.Parse(AloeTB.Text) - 1).ToString();
+                                    }
+                                    else if (plant.Name == "Grass")
+                                    {
+                                        GrassTB.Text = (int.Parse(GrassTB.Text) - 1).ToString();
+                                    }
+                                }
+                            }
+                            if (animal.EatTrees)
+                            {
+                                if (PlantPositions[position[0], position[1]] == 2)
+                                {
+                                    Plant plant = PlantList.Where(p => p.PositionX == position[0] && p.PositionY == position[1]).FirstOrDefault();
+                                    animal.Eat(plant.HPRestore);
+                                    PlantPositions[position[0], position[1]] = 0;
+                                    PlantList.Remove(plant);
+                                    if (plant.Name == "Acacia")
+                                    {
+                                        AcaciaTB.Text = (int.Parse(AcaciaTB.Text) - 1).ToString();
+                                    }
+                                    else if (plant.Name == "Baobab")
+                                    {
+                                        BaobabTB.Text = (int.Parse(BaobabTB.Text) - 1).ToString();
+                                    }
+                                }
+                            }
+                            AnimalPositions[position[0], position[1]] = 1;
+
                         }
                         else
                         {
+                            
                             lastPosition = animal.GetPosition();
                             animal.Move();
                             position = animal.GetPosition();
@@ -364,70 +489,32 @@ namespace ProjectSavanna
                                 position[0] = lastPosition[0];
                                 position[1] = lastPosition[1];
                             }
+
+                            if (AnimalPositions[position[0], position[1]] == 1)
+                            {
+                                animal.IsHunted();
+                            }
+                            AnimalPositions[position[0], position[1]] = 2;
                         }
                     }
                     else
                     {
-                        do
+                        animal.Move();
+                        int[] newPosition = animal.GetPosition();
+                        if (AnimalPositions[position[0], position[1]] == 0)
                         {
-                            animal.Move();
-                            position = animal.GetPosition();
-                        } while (AnimalPositions[position[0], position[1]] != 0);
+                            position[0] = newPosition[0];
+                            position[1] = newPosition[1];
+                        }
+                        //do
+                        //{
+                        //    animal.Move();
+                        //    position = animal.GetPosition();
+                        //} while (AnimalPositions[position[0], position[1]] != 0);
                     }
 
-                    BoardImages[position[0], position[1]].Source = ModelImage;
-                    if (animal.IsHerbivores)
-                    {
-                        if (animal.EatHerbs)
-                        {
-                            if (PlantPositions[position[0], position[1]] == 1)
-                            {
-                                Plant plant = PlantList.Where(p => p.PositionX == position[0] && p.PositionY == position[1]).FirstOrDefault();
-                                animal.Eat(plant.HPRestore);
-                                PlantPositions[position[0], position[1]] = 0;
-                                PlantList.Remove(plant);
-                                if (plant.Name == "Aloe")
-                                {
-                                    AloeTB.Text = (int.Parse(AloeTB.Text) - 1).ToString();
-                                }
-                                else if (plant.Name == "Grass")
-                                {
-                                    GrassTB.Text = (int.Parse(GrassTB.Text) - 1).ToString();
-                                }
-                            }
-                        }
-                        if (animal.EatTrees)
-                        {
-                            if (PlantPositions[position[0], position[1]] == 2)
-                            {
-                                Plant plant = PlantList.Where(p => p.PositionX == position[0] && p.PositionY == position[1]).FirstOrDefault();
-                                animal.Eat(plant.HPRestore);
-                                PlantPositions[position[0], position[1]] = 0;
-                                PlantList.Remove(plant);
-                                if (plant.Name == "Acacia")
-                                {
-                                    AcaciaTB.Text = (int.Parse(AcaciaTB.Text) - 1).ToString();
-                                }
-                                else if (plant.Name == "Baobab")
-                                {
-                                    BaobabTB.Text = (int.Parse(BaobabTB.Text) - 1).ToString();
-                                }
-                            }
-                        }
-                        AnimalPositions[position[0], position[1]] = 1;
-                    }
-                    else
-                    {
-                        AnimalPositions[position[0], position[1]] = 2;
-                    }
-                    if (!animal.IsHuntTime)
-                    {
-                        int[] huntPosition = CheckHuntTime(position,animal.Sight, animal.IsHerbivores);
-                        if (huntPosition[0] != position[0] || huntPosition[1] != position[1])
-                        {
-                            animal.StartHunt(huntPosition[0], huntPosition[1]);
-                        }
-                    }
+                    BoardImages[position[0], position[1]].Source = animal.GetImageSource();
+                    
 
                 }
                 else
@@ -466,84 +553,7 @@ namespace ProjectSavanna
             {
                 AnimalList.Remove(dead);
             }
-            foreach (var plant in PlantList)
-            {
-                position = plant.GetPosition(); 
-                int sight = plant.NewTurn();
-
-                if (plant.Name == "Acacia")
-                {
-                    ModelImage = new BitmapImage(new Uri(@"pack://application:,,,/Image/Acacia.png"));
-                }else if (plant.Name == "Aloe")
-                {
-                    ModelImage = new BitmapImage(new Uri(@"pack://application:,,,/Image/Aloe.png"));
-                }else if (plant.Name == "Baobab")
-                {
-                    ModelImage = new BitmapImage(new Uri(@"pack://application:,,,/Image/Baobab.png"));
-                }else
-                {
-                    ModelImage = new BitmapImage(new Uri(@"pack://application:,,,/Image/Grass.png"));
-                }
-
-                if (AnimalPositions[position[0],position[1]] ==0)
-                {
-                    BoardImages[position[0], position[1]].Source = ModelImage;
-                }
-
-                if (sight!=0)
-                {
-                    Plant newPlant;
-                    if (plant.Name == "Acacia")
-                    {
-                        newPlant = new Acacia();
-                        newPlant.SetPosition(position, sight);
-                    }
-                    else if (plant.Name == "Aloe")
-                    {
-                        newPlant = new Aloe();
-                        newPlant.SetPosition(position, sight);
-                    }
-                    else if (plant.Name == "Baobab")
-                    {
-                        newPlant = new Baobab();
-                        newPlant.SetPosition(position, sight);
-                    }
-                    else
-                    {
-                        newPlant = new Grass();
-                        newPlant.SetPosition(position, sight);
-                    }
-                    position = newPlant.GetPosition();
-                    if (PlantPositions[position[0],position[1]] == 0)
-                    {
-                        NewPlants.Add(newPlant);
-                        if (plant.Name == "Acacia")
-                        {
-                            PlantPositions[position[0], position[1]] = 2;
-                            AcaciaTB.Text = (int.Parse(AcaciaTB.Text) + 1).ToString();
-                        }
-                        else if (plant.Name == "Baobab")
-                        {
-                            PlantPositions[position[0], position[1]] = 2;
-                            BaobabTB.Text = (int.Parse(BaobabTB.Text) + 1).ToString();
-                        }
-                        else if (plant.Name == "Grass")
-                        {
-                            PlantPositions[position[0], position[1]] = 1;
-                            GrassTB.Text = (int.Parse(GrassTB.Text) + 1).ToString();
-                        }
-                        else
-                        {
-                            PlantPositions[position[0], position[1]] = 1;
-                            AloeTB.Text = (int.Parse(AloeTB.Text) + 1).ToString();
-                        }
-                    }
-                }
-            }
-            foreach (var plant in NewPlants)
-            {
-                PlantList.Add(plant);
-            }
+            
         }
 
         private int[] CheckHuntTime(int[] position,int sight, bool isHerbivores)
@@ -577,7 +587,27 @@ namespace ProjectSavanna
                 }
             }
             return position;
+        }
+        private int[] UpdateHuntPosition(int[] lastHuntPosition)
+        {
 
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    if (lastHuntPosition[0]-i>=0 && lastHuntPosition[0] - i < 50)
+                    {
+                        if (lastHuntPosition[1] - j >= 0 && lastHuntPosition[1] - j < 50)
+                        {
+                            if (AnimalPositions[lastHuntPosition[0] - i, lastHuntPosition[1] - j] == 1)
+                            {
+                                return new int[] { lastHuntPosition[0] - i, lastHuntPosition[1] - j };
+                            }
+                        }
+                    }
+                }
+            }
+            return new int[] { 0 };
         }
     }
 }
