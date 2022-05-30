@@ -41,6 +41,22 @@ namespace ProjectSavanna.Model
                 {
                     PositionY++;
                 }
+                if (PositionX > 49)
+                {
+                    PositionX = 49;
+                }
+                else if (PositionX < 0)
+                {
+                    PositionX = 0;
+                }
+                if (PositionY > 49)
+                {
+                    PositionY = 49;
+                }
+                else if (PositionY < 0)
+                {
+                    PositionY = 0;
+                }
             }
             else
             {

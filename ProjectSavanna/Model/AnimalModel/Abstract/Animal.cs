@@ -8,28 +8,24 @@ namespace ProjectSavanna.Model
 {
     public abstract class Animal
     {
-        private static int staticID { get; set; }
-        public int ID { get; set; }
         public string Name { get; set; }
-        public int HP { get; set; }
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
+        protected int HP { get; set; }
+        protected int PositionX { get; set; }
+        protected int PositionY { get; set; }
         public int Sight { get; set; }
         public bool IsHerbivores { get; set; }
         public bool EatTrees { get; set; }
         public bool EatHerbs { get; set; }
         public bool IsHuntTime { get; set; }
-        public int HuntID { get; set; }
-        public int HuntPositionX { get; set; }
-        public int HuntPositionY { get; set; }
+        protected int HuntPositionX { get; set; }
+        protected int HuntPositionY { get; set; }
 
         public Animal()
         {
-            ID = staticID;
-            staticID++;
             SetPosition();
             EatHerbs = false;
             EatTrees = false;
+            IsHuntTime = false;
         }
         public void SetPosition()
         {
@@ -46,32 +42,57 @@ namespace ProjectSavanna.Model
             switch (move)
             {
                 case 1:
-                    PositionX += 1;
+                    if (PositionX!=49)
+                    {
+                        PositionX += 1;
+                    }
                     break;
                 case 2:
-                    PositionX -= 1;
+                    if (PositionX!=0)
+                    {
+                        PositionX -= 1;
+                    }
                     break;
                 case 3:
-                    PositionY += 1;
+                    if (PositionY!=49)
+                    {
+                        PositionY += 1;
+                    }
                     break;
                 case 4:
-                    PositionY -= 1;
+                    if (PositionY!=0)
+                    {
+                        PositionY -= 1;
+                    }
                     break;
                 case 5:
-                    PositionY += 1;
-                    PositionX += 1;
+
+                    if (PositionY!=49 && PositionX!=49)
+                    {
+                        PositionY += 1;
+                        PositionX += 1;
+                    }
                     break;
                 case 6:
-                    PositionY -= 1;
-                    PositionX += 1;
+                    if (PositionY != 0 && PositionX != 49)
+                    {
+                        PositionY -= 1;
+                        PositionX += 1;
+                    }
                     break;
                 case 7:
-                    PositionY += 1;
-                    PositionX -= 1;
+                    if (PositionY != 49 && PositionX != 0)
+                    {
+                        PositionY += 1;
+                        PositionX -= 1;
+                    }
                     break;
                 default:
-                    PositionY -= 1;
-                    PositionX -= 1;
+                    if (PositionY != 0 && PositionX != 0)
+                    {
+                        PositionY -= 1;
+                        PositionX -= 1;
+                    }
                     break;
             }
         }
@@ -81,7 +102,7 @@ namespace ProjectSavanna.Model
             int[] position = { PositionX, PositionY };
             return position;
         }
-        public bool IsHunted()
+        public void IsHunted()
         {
             if (PositionX == HuntPositionX && PositionY == HuntPositionY)
             {
@@ -89,11 +110,15 @@ namespace ProjectSavanna.Model
                 {
                     HP = 0;
                 }
-                return true;
+                else
+                {
+                    HP += 75;
+                }
+                IsHuntTime = false;
             }
             else
             {
-                return false;
+                IsHuntTime = true;
             }
         }
         public bool IsAlive()
@@ -107,6 +132,11 @@ namespace ProjectSavanna.Model
             {
                 return false;
             }
+        }
+        public void SetPosition(int posX, int posY)
+        {
+            PositionX = posX;
+            PositionY = posY;
         }
 
     }

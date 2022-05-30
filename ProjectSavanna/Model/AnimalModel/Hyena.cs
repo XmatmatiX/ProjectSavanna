@@ -12,7 +12,7 @@ namespace ProjectSavanna.Model
         {
             Name = "Hyena";
             Sight = 4;
-            HP = 50;
+            HP = 35;
 
 
 

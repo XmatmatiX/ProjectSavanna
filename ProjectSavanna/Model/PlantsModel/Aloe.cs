@@ -11,6 +11,7 @@ namespace ProjectSavanna.Model.PlantsModel
     {
         public Aloe() : base()
         {
+            Name = "Aloe";
             HPRestore = 10;
             PlantTime = 4;
             ActualPlantTime = PlantTime;

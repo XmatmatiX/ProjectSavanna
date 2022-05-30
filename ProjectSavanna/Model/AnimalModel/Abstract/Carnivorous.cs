@@ -8,7 +8,7 @@ namespace ProjectSavanna.Model
 {
     public abstract class Carnivorous : Animal
     {
-        public int Stamina { get; set; }
+        private int Stamina { get; set; }
 
         public Carnivorous() : base()
         {
@@ -17,17 +17,10 @@ namespace ProjectSavanna.Model
             Stamina = 8;
         }
 
-        public override void Eat(int HPRestore)
-        {
-            if (IsHunted())
-            {
-                HP += 75;
-            }
-        }
 
         public override void Move()
         {
-            if (IsHuntTime)
+            if (IsHuntTime && Stamina >=0)
             {
                 Stamina--;
                 for (int i = 0; i < 2; i++)
@@ -50,6 +43,24 @@ namespace ProjectSavanna.Model
                         PositionY--;
                     }
                 }
+                if (PositionX >49)
+                {
+                    PositionX = 49;
+                }
+                else if (PositionX <0)
+                {
+                    PositionX = 0;
+                }
+
+                if (PositionY > 49)
+                {
+                    PositionY = 49;
+                }
+                else if (PositionY < 0)
+                {
+                    PositionY = 0;
+                }
+
             }
             else
             {
@@ -70,6 +81,9 @@ namespace ProjectSavanna.Model
                 HuntPositionX = x;
                 HuntPositionY = y;
             }
+        }
+        public override void Eat(int HPRestore)
+        {
         }
     }
 }

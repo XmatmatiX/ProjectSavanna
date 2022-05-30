@@ -56,7 +56,8 @@
             <TextBox x:Name="AloeTB" Margin="20" VerticalAlignment="Center" Text="0" Grid.Row="9" Grid.Column="1"/>
 
             <Button x:Name="StartBtn" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Grid.ColumnSpan="2" Click="StartBtn_Click"/>
-            <Button x:Name="EndBtn" Content="End symulation" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Grid.ColumnSpan="2" Click="EndBtn_Click" />
+            <Button x:Name="EndBtn" Content="End symulation" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Grid.Column="1" Click="EndBtn_Click" />
+            <Button x:Name="MoveBtn" Content="Move" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" Grid.Row="10" Click="MoveBtn_Click"  />
         </Grid>
         
     </Grid>
