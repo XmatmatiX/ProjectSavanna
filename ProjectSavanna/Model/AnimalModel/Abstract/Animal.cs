@@ -37,64 +37,77 @@ namespace ProjectSavanna.Model
         public abstract void Eat(int HPRestore);
         public virtual void Move()
         {
+            bool isMoved = false;
             Random random = new Random();
             int move = random.Next(1, 9);
-            switch (move)
+            while (!isMoved)
             {
-                case 1:
-                    if (PositionX!=49)
-                    {
-                        PositionX += 1;
-                    }
-                    break;
-                case 2:
-                    if (PositionX!=0)
-                    {
-                        PositionX -= 1;
-                    }
-                    break;
-                case 3:
-                    if (PositionY!=49)
-                    {
-                        PositionY += 1;
-                    }
-                    break;
-                case 4:
-                    if (PositionY!=0)
-                    {
-                        PositionY -= 1;
-                    }
-                    break;
-                case 5:
+                switch (move)
+                {
+                    case 1:
+                        if (PositionX != 49)
+                        {
+                            PositionX += 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 2:
+                        if (PositionX != 0)
+                        {
+                            PositionX -= 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 3:
+                        if (PositionY != 49)
+                        {
+                            PositionY += 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 4:
+                        if (PositionY != 0)
+                        {
+                            PositionY -= 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 5:
 
-                    if (PositionY!=49 && PositionX!=49)
-                    {
-                        PositionY += 1;
-                        PositionX += 1;
-                    }
-                    break;
-                case 6:
-                    if (PositionY != 0 && PositionX != 49)
-                    {
-                        PositionY -= 1;
-                        PositionX += 1;
-                    }
-                    break;
-                case 7:
-                    if (PositionY != 49 && PositionX != 0)
-                    {
-                        PositionY += 1;
-                        PositionX -= 1;
-                    }
-                    break;
-                default:
-                    if (PositionY != 0 && PositionX != 0)
-                    {
-                        PositionY -= 1;
-                        PositionX -= 1;
-                    }
-                    break;
+                        if (PositionY != 49 && PositionX != 49)
+                        {
+                            PositionY += 1;
+                            PositionX += 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 6:
+                        if (PositionY != 0 && PositionX != 49)
+                        {
+                            PositionY -= 1;
+                            PositionX += 1;
+                            isMoved = true;
+                        }
+                        break;
+                    case 7:
+                        if (PositionY != 49 && PositionX != 0)
+                        {
+                            PositionY += 1;
+                            PositionX -= 1;
+                            isMoved = true;
+                        }
+                        break;
+                    default:
+                        if (PositionY != 0 && PositionX != 0)
+                        {
+                            PositionY -= 1;
+                            PositionX -= 1;
+                            isMoved = true;
+                        }
+                        break;
+                }
             }
+            
         }
 
         public int[] GetPosition()
