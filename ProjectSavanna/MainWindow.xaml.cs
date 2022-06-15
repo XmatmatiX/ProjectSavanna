@@ -438,6 +438,40 @@ namespace ProjectSavanna
                                 position[0] = lastPosition[0];
                                 position[1] = lastPosition[1];
                             }
+                            AnimalPositions[position[0], position[1]] = 1;
+
+                        }
+                        else
+                        {
+                            
+                            lastPosition = animal.GetPosition();
+                            animal.Move();
+                            position = animal.GetPosition();
+                            if (AnimalPositions[position[0], position[1]] == 2)
+                            {
+                                animal.SetPosition(lastPosition[0], lastPosition[1]);
+                                position[0] = lastPosition[0];
+                                position[1] = lastPosition[1];
+                            }
+
+                            if (AnimalPositions[position[0], position[1]] == 1)
+                            {
+                                animal.IsHunted();
+                            }
+                            AnimalPositions[position[0], position[1]] = 2;
+                        }
+                    }
+                    else
+                    {
+                        animal.Move();
+                        int[] newPosition = animal.GetPosition();
+                        if (AnimalPositions[position[0], position[1]] == 0)
+                        {
+                            position[0] = newPosition[0];
+                            position[1] = newPosition[1];
+                        }
+                        if (animal.IsHerbivores)
+                        {
                             if (animal.EatHerbs)
                             {
                                 if (PlantPositions[position[0], position[1]] == 1)
@@ -474,37 +508,6 @@ namespace ProjectSavanna
                                     }
                                 }
                             }
-                            AnimalPositions[position[0], position[1]] = 1;
-
-                        }
-                        else
-                        {
-                            
-                            lastPosition = animal.GetPosition();
-                            animal.Move();
-                            position = animal.GetPosition();
-                            if (AnimalPositions[position[0], position[1]] == 2)
-                            {
-                                animal.SetPosition(lastPosition[0], lastPosition[1]);
-                                position[0] = lastPosition[0];
-                                position[1] = lastPosition[1];
-                            }
-
-                            if (AnimalPositions[position[0], position[1]] == 1)
-                            {
-                                animal.IsHunted();
-                            }
-                            AnimalPositions[position[0], position[1]] = 2;
-                        }
-                    }
-                    else
-                    {
-                        animal.Move();
-                        int[] newPosition = animal.GetPosition();
-                        if (AnimalPositions[position[0], position[1]] == 0)
-                        {
-                            position[0] = newPosition[0];
-                            position[1] = newPosition[1];
                         }
                         //do
                         //{
